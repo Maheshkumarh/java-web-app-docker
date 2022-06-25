@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: ReplicationController
+metadata:
+ name: javawebrc
+spec:
+ replicas: 1
+ selector:
+  app: javawebapp
+ template:
+  metadata:
+   name: javawebapppod
+   labels:
+    apps: javawebapp
+  spec:
+   containers:
+   - name: javawebappcontainer
+     image: docidoci/java-web-application:1
+     ports:
+     - containerPort: 8080
+---
+apiVersion: vi
+kind: Service
+metadata:
+ name: javawebappsvc
+spec:
+ type: NodePort
+ selector:
+  app: javawebapp
+ ports:
+ - port: 80
+   targetPort: 8080
+ 
