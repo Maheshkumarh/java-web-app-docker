@@ -1,4 +1,3 @@
-
 apiVersion: v1
 kind: ReplicationController
 metadata:
@@ -13,7 +12,7 @@ spec:
         name: javawebapp
     spec:
       containers:
-      - image: docidoci/java-web-app
+      - image: docidoci/java-web-app:1
         name: javawebapp
         ports:
         - name: javawebapp
@@ -33,3 +32,4 @@ spec:
       targetPort: 8080
   selector:
     name: javawebapp
+
